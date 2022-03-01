@@ -12256,6 +12256,66 @@ body {
 .up-btn:focus {
     outline: none;
 }
-.err-msg{
+.err-msg {
     color: red;
+}
+
+/************** User registration page css *****/
+.regform {
+    overflow: hidden;
+}
+#userRegForm {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+#userRegForm input {
+    width: 100%;
+    margin: 10px;
+    outline: none;
+}
+#userRegForm input:focus {
+    overflow: hidden;
+    outline-style: none;
+}
+.userRegBTN {
+    margin: 10px;
+    width: 100%;
+}
+/************** User update page css *****/
+.user-update {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    /* text-align: center; */
+}
+.user-update h3 {
+    align-items: center;
+    text-align: center;
+}
+.user-update-card {
+    width: 100%;
+    /* margin-bottom: 10px; */
+}
+#userEditForm {
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+#userEditForm input,
+#userEditForm select {
+    margin: 5px 0;
+    overflow: hidden;
+}
+#userEditForm label {
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-left: 5px;
+}
+.user-update-btn {
+    width: 100%;
 }

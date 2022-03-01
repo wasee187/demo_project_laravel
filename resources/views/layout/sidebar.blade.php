@@ -18,7 +18,7 @@
                         {{-- dynamically generating user and admin sidebar --}}
                         @if (session('user') && (Session::get('user')['role']=='Admin'||Session::get('user')['role']=='admin'))
                             <a class="nav-link" href="/admin">User List</a>
-                            <a class="nav-link" href="/register">Register</a>
+                            <a class="nav-link" href="/admin/user/register">Register</a>
                             <a class="nav-link" href="/logout">Logout</a>
                         @else 
                             <a class="nav-link" href="/user/file_upload">File Upload</a>

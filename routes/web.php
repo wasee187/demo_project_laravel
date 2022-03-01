@@ -45,10 +45,17 @@ Route::group(['middleware' => ['pagerestriced']],function(){
     Route::post('/login', [AuthController::class,'login']);
     Route::post('/register', [AuthController::class,'register']);
 
-    //***********Admin Dashboard Route*************/
+    //***********Admin Route*************/
     Route::resource('users', UserController::class);
-    Route::put('users/{id}/status',[UserController::class,'updateStatus']);
     Route::get('admin',[AdminController::class,'index']);
+    Route::get('admin/user/register',[AdminController::class,'user_Register']);
+    Route::get('admin/user/{id}/edit',[AdminController::class,'edit_user']);
+
+    Route::put('users/{id}/status',[UserController::class,'updateStatus']);
+    Route::post('admin/user/register',[AdminController::class,'store_user']);
+    Route::put('admin/user/{id}/update',[AdminController::class,'update_user']);
+    Route::delete('/admin/user/{id}/delete',[AdminController::class,'delete_user']);
+    Route::put('/admin/user/{id}/status',[AdminController::class,'user_status']);
 
     //***********User Dashboard Route*************/
     Route::get('user/file_upload',[ContactController::class,'create']);

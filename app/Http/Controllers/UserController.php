@@ -60,8 +60,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
-        return view('edit', ['user'=> $user]);
+
     }
 
     /**
@@ -74,29 +73,6 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         
-        $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'email'=> 'required',
-            'role'=>'required',
-        ]);
-
-        if ($validator->fails()) {
-
-            return redirect()->back()
-                        ->withErrors($validator)
-                        ->withInput();
-
-        }
-        
-        $user = User::find($id);
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->status =  $user->status;
-        $user->role = $request->role;
-        $user->password = $user->password;
-        $user->save();
-        $request->session()->flash('log_success','User updated successfully!');
-        return redirect('admin');
     }
 
     /**
@@ -107,19 +83,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id);
-        $user->delete();
-        return redirect()->back()->with('log_success','User deleted successfully!');
+       //
     }
 
-    public function updateStatus($id){
-        $user = User::find($id);
-        if($user->status=='Unblocked' || $user->status=='unblocked'){
-            $user->status = 'Blocked';
-        }else{
-            $user->status = 'Unblocked';
-        }
-        $user->save();
-        return redirect()->back()->with('log_success','User updated successfully!');
-    }
+
 }

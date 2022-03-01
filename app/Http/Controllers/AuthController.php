@@ -14,6 +14,7 @@ class AuthController extends Controller
         $validator = Validator::make($req->all(), [
             'email' => 'required',
             'password'=> 'required'
+            //validation for input
         ]);
 
         if ($validator->fails()) {
@@ -21,19 +22,23 @@ class AuthController extends Controller
             return redirect('login')
                         ->withErrors($validator)
                         ->withInput();
+            //redirecting back with error message
 
         }
-        $user = User::where(['email' => $req->email])->first();
+        $user = User::where(['email' => $req->email])->first(); //matching the email
  
         if(!Hash::check(trim($req->password), $user->password)){
             $req->session()->flash('log_error','Invalid email or password!');
             return redirect()->back();
+            //matching hashed password if error occurred than redirecting back
         }
         
         if($user->status=='Blocked'){
+            //checking if user is blocked or not
             $req->session()->flash('log_error','User Blocked! Please contact respective concern');
             return redirect()->back();
         }else{
+            //checking if user role is admin or user
             if($user->role=='admin' || $user->role=='Admin'){
                 $req->session()->put('user',$user);
                 return redirect('admin');
@@ -45,10 +50,12 @@ class AuthController extends Controller
     }
 
     function register(Request $req){
+
         $validator = Validator::make($req->all(), [
             'name' => 'required',
             'email' => 'required',
-            'password'=> 'required'
+            'password'=> 'required' 
+            //validation for input
         ]);
  
         if ($validator->fails()) {
@@ -56,20 +63,18 @@ class AuthController extends Controller
             return redirect('register')
                         ->withErrors($validator)
                         ->withInput();
-
+            //redirecting back with error message  
         }
         $pass = $req->password;
-        $hashedPassword = Hash::make(trim($pass));
+        $hashedPassword = Hash::make(trim($pass));//hashing password
         $user = new User;
         $user->name = $req->name;
         $user->email= $req->email;
         $user->password = $hashedPassword;
-        $user->save();
-        if(Session::get('user')['role']=='admin' || Session::get('user')['role']=='Admin'){
-            $req->session()->flash('log_success','User Added Successfully');
-            return redirect('admin');
-        }else{
-            return redirect('login');
-        }
+        $user->save(); //new user save
+
+        $req->session()->flash('log_success','Registration Successful, Please login');
+        return redirect('login'); //redirecting user for login
+
     }
 }

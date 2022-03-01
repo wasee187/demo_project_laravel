@@ -8,7 +8,7 @@
         <div class="card mb-4">
             <div class="card-header">
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="#!">Dashboard</a></li>
                     <li class="breadcrumb-item active">User List</li>
                 </ol>
             </div>
@@ -44,10 +44,12 @@
                                     <td>{{$user->name}}</td>
                                     <td>{{$user->email}}</td>
                                     @if(Session::get('user')['id']== $user->id)
+                                       {{-- disabling status button if logged in user --}}
+
                                         <td><button class="btn btn-success" disabled>{{$user->status}}</button></a>
                                     @else
                                         <td>
-                                            <form action="users/{{$user->id}}/status" method='POST'>
+                                            <form action="admin/user/{{$user->id}}/status" method='POST'>
                                                 @csrf
                                                 @method('PUT')
                                                 <button type="submit" 
@@ -62,13 +64,14 @@
                                         </td>
                                     @endif
 
-                                    <td><a type="button" class="btn btn-primary" href={{"users/$user->id/edit"}}>Edit</td></a>
+                                    <td><a type="button" class="btn btn-primary" href={{"admin/user/$user->id/edit"}}>Edit</td></a>
                                     
-                                    @if(Session::get('user')['id']== $user->id)
+                                    @if(Session::get('user')['id']== $user->id) 
+                                    {{-- disabling delete button if logged in user --}}
                                         <td><button class="btn btn-warning" disabled>Delete</button></a>
                                     @else
                                         <td>   
-                                            <form action="users/{{$user->id}}" method='POST'>
+                                            <form action="/admin/user/{{$user->id}}/delete" method='POST'>
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-warning">Delete</button>
