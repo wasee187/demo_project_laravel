@@ -43,7 +43,7 @@
                                 <tr>
                                     <td>{{$user->name}}</td>
                                     <td>{{$user->email}}</td>
-                                    @if(Session::get('user')['id']== $user->id)
+                                    @if(Session::get('user') && Session::get('user')['id']== $user->id)
                                        {{-- disabling status button if logged in user --}}
 
                                         <td><button class="btn btn-success" disabled>{{$user->status}}</button></a>
@@ -66,7 +66,7 @@
 
                                     <td><a type="button" class="btn btn-primary" href={{"admin/user/$user->id/edit"}}>Edit</td></a>
                                     
-                                    @if(Session::get('user')['id']== $user->id) 
+                                    @if(Session::get('user') && Session::get('user')['id']== $user->id) 
                                     {{-- disabling delete button if logged in user --}}
                                         <td><button class="btn btn-warning" disabled>Delete</button></a>
                                     @else

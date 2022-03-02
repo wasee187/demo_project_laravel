@@ -2,6 +2,10 @@
 @section('content')
 <main>
     <div class="container-fluid px-4">
+        {{-- error/success message check --}}
+        @if(session('error_msg'))
+        <p class="error_msg">{{session('error_msg')}}</p>
+        @endif
         @if(session('log_success'))
         <p class="suc_msg">{{session('log_success')}}</p>
         @endif

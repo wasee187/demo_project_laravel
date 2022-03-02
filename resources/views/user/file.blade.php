@@ -2,6 +2,10 @@
 @section('content')
 <main>
     <div class="container-fluid px-4">
+         {{-- error message check --}}
+        @if(session('error_msg'))
+        <p class="error_msg">{{session('error_msg')}}</p>
+        @endif
         <div class="card mb-4">
             <div class="card-header">
                 <ol class="breadcrumb mb-4">

@@ -12260,7 +12260,7 @@ body {
     color: red;
 }
 
-/************** User registration page css *****/
+/************** Admin->User registration page css *****/
 .regform {
     overflow: hidden;
 }
@@ -12282,7 +12282,7 @@ body {
     margin: 10px;
     width: 100%;
 }
-/************** User update page css *****/
+/************** Admin->User update page css *****/
 .user-update {
     width: 100%;
     overflow: hidden;
@@ -12318,4 +12318,9 @@ body {
 }
 .user-update-btn {
     width: 100%;
+}
+
+/*************User page*************/
+.error_msg{
+    background-color: red;
 }

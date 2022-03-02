@@ -37,19 +37,18 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return view('register');
 });
+Route::post('/login', [AuthController::class,'login']);
+Route::post('/register', [AuthController::class,'register']);
 
 //***************Group middleware for auth ********************* */
 
-Route::group(['middleware' => ['pagerestriced']],function(){
-
-    Route::post('/login', [AuthController::class,'login']);
-    Route::post('/register', [AuthController::class,'register']);
+Route::group(['middleware' => ['web','admin_middleware']],function(){
 
     //***********Admin Route*************/
     Route::resource('users', UserController::class);
-    Route::get('admin',[AdminController::class,'index']);
-    Route::get('admin/user/register',[AdminController::class,'user_Register']);
-    Route::get('admin/user/{id}/edit',[AdminController::class,'edit_user']);
+    Route::get('admin',[AdminController::class,'index'])->middleware("admin_middleware");;
+    Route::get('admin/user/register',[AdminController::class,'user_Register'])->middleware("admin_middleware");
+    Route::get('admin/user/{id}/edit',[AdminController::class,'edit_user'])->middleware("admin_middleware");;
 
     Route::put('users/{id}/status',[UserController::class,'updateStatus']);
     Route::post('admin/user/register',[AdminController::class,'store_user']);
