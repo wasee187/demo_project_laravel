@@ -11,8 +11,13 @@
         </div> --}}
     </form>
     <!-- Navbar-->
-    <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-        <li class="nav-item dropdown">
+    <ul class="user_name_ul">
+        @if (session('user'))
+            <li><a class="user_name border border-success"  href="/dashboard">{{Session::get('user')['name']}}</a></li>          
+        @endif
+    </ul>
+    {{-- <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+        {{-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 @if (session('user'))
@@ -21,6 +26,6 @@
                 <li><hr class="dropdown-divider" /></li>
                 <li><a class="dropdown-item" href="/logout">Logout</a></li>
             </ul>
-        </li>
-    </ul>
+        </li> --}}
+    </ul> --}}
 </nav>

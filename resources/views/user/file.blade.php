@@ -105,7 +105,6 @@
                 },
                 dataType: "json",
                 success: function(response) {
-                    console.log(response.chunk_file);
                     $.each(response.chunk_file, function(key, item) {
                         $('.chunk_tbody').append(
                             '<tr>\
