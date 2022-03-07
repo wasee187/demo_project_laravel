@@ -12,8 +12,10 @@
     </form>
     <!-- Navbar-->
     <ul class="user_name_ul">
-        @if (session('user'))
-            <li><a class="user_name border border-success"  href="/dashboard">{{Session::get('user')['name']}}</a></li>          
+        @if (session('user') && (Session::get('user')['role']=='user'||Session::get('user')['role']=='User'))
+            <li><a class="user_name border border-success"  href="/user/dashboard">{{Session::get('user')['name']}}</a></li> 
+        @else 
+            <li><a class="user_name border border-success"  href="/admin">{{Session::get('user')['name']}}</a></li>        
         @endif
     </ul>
     {{-- <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
