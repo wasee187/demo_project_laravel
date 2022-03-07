@@ -21,8 +21,8 @@
                             <a class="nav-link" href="/admin/user/register">Register</a>
                             <a class="nav-link" href="/logout">Logout</a>
                         @else 
+                            <a class="nav-link" href="/user/dashboard">File Info</a>
                             <a class="nav-link" href="/user/file_upload">File Upload</a>
-                            <a class="nav-link" href="/file">File Info</a>
                             <a class="nav-link" href="/logout">Logout</a>
                         @endif
                     </nav>

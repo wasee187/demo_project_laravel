@@ -20,7 +20,7 @@ class AdminMiddleware
 
         if(($request->path() == 'admin' || $request->path() == 'admin/user/register' || $request->path() == 'admin/user/{id}/edit') &&!(Session::get('user')['role']=='admin' || Session::get('user')['role']=='Admin')){
             $request->session()->flash('error_msg', 'Access Denied! You do not have permission to perform the operation');
-            return redirect('file');
+            return redirect('user/dashboard');
         }
         return $next($request);
     }

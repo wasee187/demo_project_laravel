@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFilesTable extends Migration
+class CreateChunkfilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateFilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('files', function (Blueprint $table) {
+        Schema::create('chunkfiles', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('total_uploads');
-            $table->string('total_process');
+            $table->string('index_number');
+            $table->string('file_id');
+            $table->string('total_contact');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateFilesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('files');
+        Schema::dropIfExists('chunkfiles');
     }
 }

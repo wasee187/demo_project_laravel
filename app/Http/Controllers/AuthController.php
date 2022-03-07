@@ -44,7 +44,7 @@ class AuthController extends Controller
                 return redirect('admin');
             }else{
                 $req->session()->put('user',$user);
-                return redirect('file');
+                return redirect('user/dashboard');
             }
         }
     }

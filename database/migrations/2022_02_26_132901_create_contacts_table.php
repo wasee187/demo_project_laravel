@@ -21,7 +21,8 @@ class CreateContactsTable extends Migration
             $table->string('email');
             $table->string('state');
             $table->string('zip');
-            $table->string('file_name');
+            $table->string('file_id');
+            $table->string('chunk_file_id');
             $table->timestamps();
         });
     }

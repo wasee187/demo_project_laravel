@@ -57,8 +57,9 @@ Route::group(['middleware' => ['web','admin_middleware']],function(){
     Route::put('/admin/user/{id}/status',[AdminController::class,'user_status']);
 
     //***********User Dashboard Route*************/
-    Route::get('user/file_upload',[ContactController::class,'create']);
-    Route::get('file',[FileController::class,'index']);
-    Route::get('contact/{name}',[ContactController::class,'show']);
-    Route::post('contact',[ContactController::class,'store']);
+    Route::get('user/file_upload',[UserController::class,'contact_file_upload']);
+    Route::get('user/dashboard',[UserController::class,'index']);
+    Route::get('/user/file/chunk_file',[UserController::class,'show_chunk_file']);
+    Route::get('user/contact/{id}/show',[UserController::class,'show_contact']);
+    Route::post('/user/contact',[UserController::class,'contact_store']);
 });

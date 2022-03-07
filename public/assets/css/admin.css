@@ -12321,6 +12321,11 @@ body {
 }
 
 /*************User page*************/
-.error_msg{
+.error_msg {
     background-color: red;
+}
+.file-form label {
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
 }
